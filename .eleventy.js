@@ -12,6 +12,11 @@ module.exports = config => {
     config.addPassthroughCopy('src/fonts');
     config.addPassthroughCopy('src/admin');
 
+    /* PWA */
+    config.addPassthroughCopy("src/assets");
+    config.addPassthroughCopy("src/sw.js");
+    config.addPassthroughCopy("src/manifest.json");
+
 
     /* Collections */
     config.addCollection('recipes', collection => {

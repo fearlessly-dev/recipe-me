@@ -1,0 +1,33 @@
+{
+    "lang": "en-us",
+    "name": "AJ's Offline Cookbook",
+    "short_name": "AJ's Cookbook",
+    "description": "An offline-friendly online cookbook perfect for that campfire trip off-the-grid",
+    "start_url": "/",
+    "background_color": "#ff001b",
+    "theme_color": "#e8ca6c",
+    "orientation": "any",
+    "display": "standalone",
+    "scope": "/",
+    "dir": "ltr",
+    "icons": [
+        {
+            "src": "/assets/logo192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/logo512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "categories": [
+        "food",
+        "health",
+        "book",
+        "entertainment"
+    ],
+    "screenshots": [],
+    "shortcuts": []
+}

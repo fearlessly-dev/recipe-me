@@ -120,3 +120,53 @@ Some things that make this useful:
  * It pre-populates some fields, making it easier to do small edits.
  * It provides previews showing how manifest options impacts your app on desktop and mobile.
  * It has helpers to generate icons and screenshots!
+
+After doing some cosmetic cleanup (reflecting app structure in project) and manually selecting some [categories](https://developer.mozilla.org/en-US/docs/Web/Manifest/categories), I ended up with this - which I saved to `manifest.json` in the `src` directory of my 11ty project. I saved a subset of the icons in a `src/assets` folder in that same project.
+
+ ```json
+ {
+    "lang": "en-us",
+    "name": "AJ's Offline Cookbook",
+    "short_name": "AJ's Cookbook",
+    "description": "An offline-friendly online cookbook perfect for that campfire trip off-the-grid",
+    "start_url": "/",
+    "background_color": "#ff001b",
+    "theme_color": "#e8ca6c",
+    "orientation": "any",
+    "display": "standalone",
+    "scope": "/",
+    "dir": "ltr",
+    "icons": [
+        {
+            "src": "/assets/logo192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/logo512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "categories": [
+        "food",
+        "health",
+        "book",
+        "entertainment"
+    ],
+    "screenshots": [],
+    "shortcuts": []
+}
+ ```
+
+ We can now update the _eleventy.js_ config file to request that the _src/manifest.json_ and _src/assets/_ folders be passed through to the build.
+
+ The next step is to make sure the app knows the location of the manifest.json file by adding the following to the index.html. In the 11ty project, update the `src/layouts/base.njk` template to make this happen in the build.
+
+ ```
+    <link rel="manifest" href="/manifest.json">
+ ```
+
+If you are previewing your site as you build it, _inspect_ the Application tab in DevTools and you should see the manifest now show up, with the relevant properties identified. Note that the JSON must be valid! A quick Lighthouse audit from DevTools shows that it still requires a service worker. Let's commit these changes before we tackle that one.
+
+---
