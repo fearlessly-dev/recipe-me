@@ -233,3 +233,38 @@ Lastly, I updated the `eleventy.js` configuration to make sure both files were p
 Let's do a quick inspection in DevTools. Would you look at that? We have a service worker!!  Time to commit the changes and push them to deployed app.
 
 ---
+
+## 7. The Final Test & Audit!
+
+Let's run that final PWA Builder Audit - we did it!! We have an installable PWA with a viable offline experience, ready to start building up from!!
+
+| Where It Started | Where It's Going |
+|:---|:---|
+| ![](_media/pwabuilder-audit.png) | ![](_media/pwabuilder-final.png) |
+
+It's a perfect time to test it.
+ * Install the PWA on your local desktop. This is what mine looks like when installed on a MacBook Pro. Notice the standalone mode (no browser address bar or other hints that this is a web app)
+ * Explore your PWA - does it work and feel like a native app?
+ * Disconnect from the network (e.g., put your laptop in Flight mode). Can you still launch and explore it?
+ * Use the search tool (Finder on Mac) - can you discover your PWA just like any other natively installed app?
+
+![](_media/pwa-installed.png)
+
+Now if you'll excuse me - I have a campfire trip to plan off the grid for the long weekend! 
+
+---
+
+## 8. Exercise
+
+Your turn!! Take an existing app and try to refactor it to be a basic PWA.
+ * Inspect it locally - check your Application and Lighthouse tabs
+ * Audit it on PWABuilder - get baseline scores and guidance
+ * Host it on HTTPS-enabled server - GitHub pages or Azure Static Web Apps can help
+ * Add a Manifest - and link it.
+ * Test it - can you install this to desktop?
+ * Add a Service Worker - and register it.
+ * Inspect it once in DevTools locally - then deploy it
+ * Test it - go Offline. Does the app still work?
+ * Audit it - how has the score changed?
+
+
