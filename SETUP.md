@@ -121,7 +121,11 @@ Some things that make this useful:
  * It provides previews showing how manifest options impacts your app on desktop and mobile.
  * It has helpers to generate icons and screenshots!
 
-After doing some cosmetic cleanup (reflecting app structure in project) and manually selecting some [categories](https://developer.mozilla.org/en-US/docs/Web/Manifest/categories), I ended up with this - which I saved to `manifest.json` in the `src` directory of my 11ty project. I saved a subset of the icons in a `src/assets` folder in that same project.
+You can generate and save the file to `manifest.json` for use in your PWA. You can also just generate this with any text editor - just make sure it is valid JSON. I saved the file and manually cleaned it up a little:
+ * updating icon paths to reflect project structure
+ * picking some [categories](https://developer.mozilla.org/en-US/docs/Web/Manifest/categories) for my app domain
+
+The icons and manifest were saved into the `src/` and `src/assets` folder of my PWA and the _eleventy.js_ config file updated to show that these should be "passed through" to the build as is. Here is what my manifest.json looks like.
 
  ```json
  {
@@ -159,14 +163,73 @@ After doing some cosmetic cleanup (reflecting app structure in project) and manu
 }
  ```
 
- We can now update the _eleventy.js_ config file to request that the _src/manifest.json_ and _src/assets/_ folders be passed through to the build.
+Now, we need to update the app HTML to show where the manifest.json is located. In my 11ty project, I update this in the `src/layouts/base.njk`  template. The end result is a `<link>` in your app _index.html_ that looks like this.
 
- The next step is to make sure the app knows the location of the manifest.json file by adding the following to the index.html. In the 11ty project, update the `src/layouts/base.njk` template to make this happen in the build.
-
- ```
-    <link rel="manifest" href="/manifest.json">
+ ```html
+<link rel="manifest" href="/manifest.json">
  ```
 
-If you are previewing your site as you build it, _inspect_ the Application tab in DevTools and you should see the manifest now show up, with the relevant properties identified. Note that the JSON must be valid! A quick Lighthouse audit from DevTools shows that it still requires a service worker. Let's commit these changes before we tackle that one.
+If you inspect a site preview (localhost) or deployed (build) version now, you should see the Manifest section of the Applications tab reflect the properties you just added. Let's commit the changes and go to the next fix.
+
+---
+
+## 6. Add the Service Worker
+
+As before, you can do this manually or jumpstart the process using PWABuilder. We need to do two things:
+ * Create the service worker implementation.
+ * Register the service worker to initialize on startup 
+
+[This guide](https://docs.microsoft.com/en-us/microsoft-edge/progressive-web-apps-chromium/how-to/#step-3---add-a-service-worker) explains how we can do this with PWABuilder. Let's try it out.
+
+I generated the service worker for the `cache-first` strategy. The download gave me two files. 
+
+First the _pwabuilder-sw-register.js_ file which does the registration for you. The contents are below.
+
+```js
+// This is the "serving cached media" service worker
+
+// Add this below content to your HTML page inside a <script type="module"></script> tag, or add the js file to your page at the very top to register service worker
+// If you get an error about not being able to import, double check that you have type="module" on your <script /> tag
+
+/*
+ This code uses the pwa-update web component https://github.com/pwa-builder/pwa-update to register your service worker,
+ tell the user when there is an update available and let the user know when your PWA is ready to use offline.
+*/
+
+import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+
+const el = document.createElement('pwa-update');
+document.body.appendChild(el);
+```
+
+I saved this to `src/pwbuilder-sw-register.js` in my project repo, then added this to my `src/layouts/base.njk` file inside the `<head>` tag. 
+
+Next, the _pwabuilder-sw.js_ implementation file.
+
+```js
+// This is the service worker with the Cache-first network
+
+const CACHE = "pwabuilder-precache";
+
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
+
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
+});
+
+workbox.routing.registerRoute(
+  new RegExp('/*'),
+  new workbox.strategies.CacheFirst({
+    cacheName: CACHE
+  })
+);
+```
+
+
+Lastly, I updated the `eleventy.js` configuration to make sure both files were passed through to build.
+
+Let's do a quick inspection in DevTools. Would you look at that? We have a service worker!!  Time to commit the changes and push them to deployed app.
 
 ---

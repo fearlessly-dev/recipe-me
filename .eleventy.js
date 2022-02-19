@@ -14,8 +14,9 @@ module.exports = config => {
 
     /* PWA */
     config.addPassthroughCopy("src/assets");
-    config.addPassthroughCopy("src/sw.js");
     config.addPassthroughCopy("src/manifest.json");
+    config.addPassthroughCopy("src/pwabuilder-sw-register.js");
+    config.addPassthroughCopy("src/pwabuilder-sw.js");
 
 
     /* Collections */
