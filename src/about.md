@@ -3,7 +3,12 @@ layout: layouts/base.njk
 title: About
 bodyClass: u-free-text
 ---
-![A picture of a black pug wearing a pilot jacket](/img/about.jpg)
+![A picture of the author](/img/about.jpg)
 \
 \
-This page is for you to present yourself and/or explain what your cookbook is about.
+Nothing says cooking like a campfire. \
+And nothing says campfire like being off the grid. \
+Wouldn't it be nice to access these recipes offline? \
+You're welcome AJ! -- Love, Mom. 
+
+Created using the [My Online Cookbook](https://github.com/maeligg/my-online-cookbook) 11ty starter.

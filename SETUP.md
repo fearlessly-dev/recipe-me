@@ -88,11 +88,15 @@ We know we have to add a manifest, and configure the service worker. And we can 
 
 But we can also take advantage of helpful PWA tools that make this easier for us. 
 
+For example, for service workers: [Workbox](https://developers.google.com/web/tools/workbox) is a popular set of libraries that can help you create production-ready service workers for your PWA. And the eleventy static site generator I am using provides an [eleventy-plugin-pwa](https://www.npmjs.com/package/eleventy-plugin-pwa) that uses it to generate the service worker, with guidance on how to update the source code to register it and add a Web App Manifest.
+
+We'll look at Workbox and other tools in our upcoming "Developer Tools" week. For now, I wanted to try something a little different.
+
 ---
 
 ## 5. Getting an assist from PWABuilder
 
-I'm using [PWABuilder](https://www.pwabuilder.com/) - a free auditing tool that evaluates your PWA, providing an audit report with actionable options to help you fix identified issues. Just enter your hosted app URL and click Start.
+I'm trying out [PWABuilder](https://www.pwabuilder.com/) - a free auditing tool that evaluates your PWA, providing an audit report with actionable options to help you fix identified issues. Just enter your hosted app URL and click Start.
 
 Here's what my audit report looks like. _Sad Trombone_ - we only scored a 30!
 
@@ -103,3 +107,16 @@ Here's what my audit report looks like. _Sad Trombone_ - we only scored a 30!
  * More good news? The _Manifest Options_ and _Service Worker Options_ tabs can help us generate the required _manifest.json_ and _sw.js_ files we need to satisfy installability and network-independent operations for PWA.
 
 Let's go!
+
+--- 
+
+## 5. Configuring Manifest Options
+
+Let's dive into the Manifest Options tab. Here is what that looks like as I start modifying things.
+
+![](_media/pwabuilder-manifest.png)
+
+Some things that make this useful:
+ * It pre-populates some fields, making it easier to do small edits.
+ * It provides previews showing how manifest options impacts your app on desktop and mobile.
+ * It has helpers to generate icons and screenshots!

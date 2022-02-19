@@ -1,12 +1,12 @@
 {
-    "name": "My Online Cookbook",
-    "metaDescription": "The online cookbook of John Doe",
-    "author": "John Doe",
-    "primaryColor": "#ffdb70",
-    "secondaryColor": "#32816e",
+    "name": "AJ's Offline Cookbook",
+    "metaDescription": "An offline-friendly online cookbook perfect for that campfire trip off-the-grid",
+    "author": "AJ",
+    "primaryColor": "#daa80d",
+    "secondaryColor": "#FF001C",
     "searchLabel": "Find recipes by name, tag or ingredients",
     "searchContainsLabel": "Contains",
     "servingsLabel": "servings",
     "ingredientsLabel": "Ingredients",
-    "baseURL": "https://myonlinecookbook.netlify.app"
+    "baseURL": "https://white-rock-036691f0f.1.azurestaticapps.net/"
 }
