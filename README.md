@@ -1,43 +1,46 @@
-![My Online Cookbook logo](https://raw.githubusercontent.com/maeligg/my-online-cookbook/main/github-readme.svg)
+# My Offline Cookbook!
 
-# My Online Cookbook
+![Collage showing various dishes made under  the #RecipesForAJ tag](_media/my-offline-cookbook.jpg)
 
-My Online Cookbook is a starter kit to create your own website of recipes, using [Eleventy](https://11ty.io) and [Netlify CMS](https://www.netlifycms.org/). It is meant to be both highly accessible (including to non-developers), as well as fully customisable should you want to use it as a starting off point.
+---
 
-Presentation & set-up instructions : https://myonlinecookbook.xyz/
+👩🏽‍🍳 | Welcome to _My Offline Cookbook_!
 
-Demo (this is what you get out of the box) : [https://myonlinecookbook.netlify.app/](https://myonlinecookbook.netlify.app/)
+This is project that serves as both a sandbox for me to explore modern web development techniques and practices - and a functional website to help me consolidate and organize the many recipes I've published under the [#Recipes4AJ](https://twitter.com/search?q=%23Recipes4AJ&src=typed_query&f=livey) and [#RecipesForAJ](https://twitter.com/search?q=%23RecipesForAJ&src=typed_query&f=live) tags on Twitter.
 
-Get started now by forking the project or deploy to Netlify : [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/maeligg/my-online-cookbook&stack=cms)
+---
 
-## Features
+## Origin Story
 
-### 📘 Optimised for recipes
-Unlike other general-purpose templates and website builders, My Online Cookbook is optimised for writing, reading and easily finding back your recipes. Quickly visualise which ingredients you need, navigate between recipes in the same categories, and automatically adapt quantities based on the number of servings.
+"Recipes For AJ" was a hashtag I started on Twitter as a breadcrumb trail for my now-13yo to revisit later in life. I am an American of South Asian (Indian) descent and a lifelong vegetarian who loves to cook. And I wanted to make sure I left him not just memories of the various meals we've had as a family, but tools to help him recreate those meaningfully in his own life. 
 
-### 💪 Powerful search
-The kit includes a powerful live search system offering a UX on-par with third-party services like [Algolia](https://www.algolia.com/), without needing any external dependency or subscription service.
+I am one of those _cook-by-instinct_ folks who rarely follows strict recipe measurements and guidelines, and instead follows my sensory guidance (taste, appearance, aroma) with a dash of whimsy. With this recipe site, I wanted to make that a little more actionable for him by adding some indications of measurements and steps to follow. All the while devoutly hoping he brings his own vision and style to make them his own.
 
+---
 
-### 🧰 Lightweight & easily extendable
-Easily customise the theme color and other site attributes using the global data files, or dive into the code and change anything. The CSS is authored using [Sass](https://sass-lang.com/) and following the [BEM](https://en.bem.info/) naming convention. JavaScript is added where needed using [Alpine](https://github.com/alpinejs/alpine) and following a component-based approach. Images are processed and optimised at build-time using the [Eleventy image plugin](https://www.11ty.dev/docs/plugins/image/). Apart from Alpine, there are no run-time dependencies, making the site both extremely lightweight and easy to pick up and modify.
+## Under The Hood
 
+I was motivated to start this as a means of experimenting with modern web technologies in a real-world sandbox. I was looking for a demo app to use for a ["Developing Progressive Web Apps (PWA)"](https://dev.to/azure/07-developing-progressive-web-apps-hfb) article. And I found this amazing [starter template](https://github.com/maeligg/my-online-cookbook) for _My Online Cookbook_.
+ * It is optimized for recipes, search and extensibility.
+ * It uses [https://11ty.io/](Eleventy), a static site generator
+ * It uses [https://www.netlifycms.org/](NetlifyCMS) for content management.
+ * It was setup to [deploy to Netlify](https://myonlinecookbook.netlify.app/) as its hosting provider.
 
-## Running the site locally
-1. `npm install` to install all dependencies
-2. `npm run dev` to serve the site locally
-3. `npm run build` to build the site for production
+You can read the [original README](README.original.md) for more details on the template and setup. I've wanted to play with Eleventy, so this was added incentive. But I had other requirements:
+ * I wanted to use a different hosting provider and CMS (e.g., on Azure)
+ * I wanted to make this _My Offline Cookbook_ (i.e., become a PWA)
+ * I wanted to explore advanced capabilities (AI, PWA, Serverless)
 
+You can look at my [initial SETUP notes](under-the-hood/SETUP.md) and keep an eye out for more updates as I explore these modifications.
 
-## Access the CMS admin interface
-Go to `/admin` to access the admin interface (this also works locally). You'll need to configure a user with [Netlify Identity](https://docs.netlify.com/visitor-access/identity/) to log in. For more information on how to use or configure Netlify CMS go to [their documentation](https://www.netlifycms.org/docs/intro/). In addition to recipes, all site settings (primary color, etc) as well as labels are editable from this interface.
+---
 
+## Releases
 
-## Directory structure
-* `.eleventy.js` has all the custom configuration for [Eleventy](https://11ty.io), including collections, filters and shortcodes.
-* `src/_data` contains nav and site settings, also editable from the CMS admin interface.
-* `src/_includes` contains layouts and reusable components (including SVG icons).
-* `src/admin` contains the configuration for editable fields in Netlify CMS.
-* `src/img` contains all images. Note that only images placed in `src/img/recipes` are editable from the CMS admin interface.
-* `src/recipes` is your main content, with each recipe saved as a markdown file.
-* Each other page is located at the root of `src/` as its own markdown or nunjucks file.
+You can find [releases](https://github.com/fearlessly-dev/recipe-me/releases) of the source code corresponding to various milestone moments in development. Comments and Issues feedback are always welcome.
+
+| Release | Date | Comments |
+|:--- |:---|:---|
+| [v0.1-basic-pwa](https://github.com/fearlessly-dev/recipe-me/releases/tag/v0.1-basic-pwa)| Feb 22, 2022 | Corresponds to setup documented in the ["Developing Progressive Web Apps (PWA)"](https://dev.to/azure/07-developing-progressive-web-apps-hfb) article. Adds basic PWA capability to make the online cookbook work offline! |
+| | | |
+| | | |
